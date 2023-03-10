@@ -25,7 +25,7 @@ public class Adapter extends RecyclerView.Adapter {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        ViewHolder(View view){
+        ViewHolder(View view) {
             super(view);
         }
     }
