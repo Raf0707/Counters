@@ -67,6 +67,7 @@ public class MainFragment extends Fragment implements CounterAdapter.HandleCount
                         .getInstance(getActivity().getApplication()))
                 .get(CounterViewModel.class);
 
+        /*
         Bundle bundle = getArguments();
         if (bundle != null) {
             title = bundle.getString("title", "title");
@@ -74,6 +75,8 @@ public class MainFragment extends Fragment implements CounterAdapter.HandleCount
             progress = bundle.getInt("progress", 0);
             id = bundle.getInt("id");
         }
+
+         */
 
         ctx = new WeakReference<>(this);
 

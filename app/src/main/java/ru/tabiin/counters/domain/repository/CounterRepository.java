@@ -33,43 +33,43 @@ public class CounterRepository {
     }
 
     private static class InsertTask extends AsyncTask<CounterItem, Void, Void> {
-        private CounterDao CounterDao;
+        private CounterDao сounterDao;
 
-        public InsertTask(CounterDao CounterDao) {
-            this.CounterDao = CounterDao;
+        public InsertTask(CounterDao сounterDao) {
+            this.сounterDao = сounterDao;
         }
 
         @Override
         protected Void doInBackground(CounterItem... counterItems) {
-            CounterDao.insertCounter(counterItems[0]);
+            сounterDao.insertCounter(counterItems[0]);
             return null;
         }
     }
 
     private static class UpdateTask extends AsyncTask<CounterItem, Void, Void> {
-        private CounterDao CounterDao;
+        private CounterDao сounterDao;
 
-        public UpdateTask(CounterDao CounterDao) {
-            this.CounterDao = CounterDao;
+        public UpdateTask(CounterDao сounterDao) {
+            this.сounterDao = сounterDao;
         }
 
         @Override
         protected Void doInBackground(CounterItem... counterItems) {
-            CounterDao.updateCounter(counterItems[0]);
+            сounterDao.updateCounter(counterItems[0]);
             return null;
         }
     }
 
     private static class DeleteTask extends AsyncTask<CounterItem, Void, Void> {
-        private CounterDao CounterDao;
+        private CounterDao сounterDao;
 
-        public DeleteTask(CounterDao CounterDao) {
-            this.CounterDao = CounterDao;
+        public DeleteTask(CounterDao сounterDao) {
+            this.сounterDao = сounterDao;
         }
 
         @Override
         protected Void doInBackground(CounterItem... counterItems) {
-            CounterDao.deleteCounter(counterItems[0]);
+            сounterDao.deleteCounter(counterItems[0]);
             return null;
         }
     }

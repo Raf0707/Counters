@@ -94,6 +94,7 @@ public class CounterMainFragment extends Fragment {
                     .append(" / ")
                     .append(target));
 
+            counterItem = new CounterItem(id, title, target, progress);
 
         }
 
@@ -175,7 +176,10 @@ public class CounterMainFragment extends Fragment {
             /**
              * сделать сохранение
              */
-
+            counterItem.title = binding.counterTitle.getText().toString();
+            counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+            counterItem.progress = binding.counterProgress.getProgress();
+            counterViewModel.update(counterItem);
 
         });
 
@@ -374,6 +378,11 @@ public class CounterMainFragment extends Fragment {
             /**
              * сделать сохранение
              */
+            counterItem.title = binding.counterTitle.getText().toString();
+            counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+            counterItem.progress = binding.counterProgress.getProgress();
+            counterViewModel.update(counterItem);
+            
 
         });
 
@@ -382,6 +391,14 @@ public class CounterMainFragment extends Fragment {
             /**
              * сделать сохранение
              */
+            /*
+            counterItem.title = binding.counterTitle.getText().toString();
+            counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+            counterItem.progress = binding.counterProgress.getProgress();
+            counterViewModel.delete(counterItem);
+
+             */
+            
 
         });
 
@@ -424,6 +441,11 @@ public class CounterMainFragment extends Fragment {
             /**
              * сделать сохранение
              */
+            counterItem.title = binding.counterTitle.getText().toString();
+            counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+            counterItem.progress = binding.counterProgress.getProgress();
+            counterViewModel.update(counterItem);
+            
 
         });
 
@@ -436,6 +458,11 @@ public class CounterMainFragment extends Fragment {
             /**
              * сделать сохранение
              */
+            counterItem.title = binding.counterTitle.getText().toString();
+            counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+            counterItem.progress = binding.counterProgress.getProgress();
+            counterViewModel.update(counterItem);
+            
         });
 
         binding.openTutorialBtn.setOnClickListener(v -> {
@@ -447,6 +474,11 @@ public class CounterMainFragment extends Fragment {
             /**
              * сделать сохранение
              */
+            counterItem.title = binding.counterTitle.getText().toString();
+            counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+            counterItem.progress = binding.counterProgress.getProgress();
+            counterViewModel.update(counterItem);
+            
         });
 
         binding.changeCounterModeBtn.setOnClickListener(v -> {
@@ -454,6 +486,10 @@ public class CounterMainFragment extends Fragment {
             /**
              * сделать сохранение
              */
+            counterItem.title = binding.counterTitle.getText().toString();
+            counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+            counterItem.progress = binding.counterProgress.getProgress();
+            counterViewModel.update(counterItem);
         });
 
         binding.counterResetBtn.setOnClickListener(view -> {
@@ -461,6 +497,11 @@ public class CounterMainFragment extends Fragment {
             /**
              * сделать сохранение
              */
+            counterItem.title = binding.counterTitle.getText().toString();
+            counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+            counterItem.progress = binding.counterProgress.getProgress();
+            counterViewModel.update(counterItem);
+            
         });
 
         binding.openSettingsBtn.setOnClickListener(view -> {
@@ -472,6 +513,11 @@ public class CounterMainFragment extends Fragment {
             /**
              * сделать сохранение
              */
+            counterItem.title = binding.counterTitle.getText().toString();
+            counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+            counterItem.progress = binding.counterProgress.getProgress();
+            counterViewModel.update(counterItem);
+            
         });
 
         Thread thread = new Thread(() -> {
@@ -534,6 +580,12 @@ public class CounterMainFragment extends Fragment {
         bundle.putInt("target",
                 Integer.parseInt(binding.counterTarget.getText().toString()));
         bundle.putInt("progress", currentCount);
+
+        counterItem.title = binding.counterTitle.getText().toString();
+        counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+        counterItem.progress = binding.counterProgress.getProgress();
+        counterViewModel.update(counterItem);
+
         final String[] counterModes = {"Linear counter", "Circle counter", "Swipe counter"};
         new MaterialAlertDialogBuilder(requireContext(),
                 R.style.AlertDialogTheme)
@@ -541,8 +593,6 @@ public class CounterMainFragment extends Fragment {
                 //.setMessage("Выберете новый режим")
                 .setSingleChoiceItems(counterModes, 0, (dialogInterface, i) -> {
                     selectMode = counterModes[i];
-                    Snackbar.make(requireView(), "Вы выбрали " + selectMode,
-                            BaseTransientBottomBar.LENGTH_SHORT).show();
                 })
                 .setPositiveButton("Сменить", (dialogInterface, i) -> {
                     if (selectMode == "Linear counter") {
@@ -557,6 +607,8 @@ public class CounterMainFragment extends Fragment {
                         fragmentManager.beginTransaction()
                                 .replace(R.id.containerFragment, gcf).commit();
                     }
+                    Snackbar.make(requireView(), "Вы выбрали " + selectMode,
+                            BaseTransientBottomBar.LENGTH_SHORT).show();
                 })
                 .setNeutralButton("Отмена",
                         (dialogInterface, i) ->
@@ -571,6 +623,10 @@ public class CounterMainFragment extends Fragment {
                 .setMessage("Вы уверены, что хотите удалить счетчик? " +
                         "Чтобы удалить счетчик, вернитесь на главную страницу")
                 .setPositiveButton("Удалить", (dialogInterface, i) -> {
+                    counterItem.title = binding.counterTitle.getText().toString();
+                    counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+                    counterItem.progress = binding.counterProgress.getProgress();
+                    counterViewModel.delete(counterItem);
                     changeFragment(requireActivity(),
                             new MainFragment(),
                             R.id.containerFragment,
@@ -605,6 +661,10 @@ public class CounterMainFragment extends Fragment {
         /**
          * сделать сохранение
          */
+        counterItem.title = binding.counterTitle.getText().toString();
+        counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+        counterItem.progress = binding.counterProgress.getProgress();
+        counterViewModel.update(counterItem);
         super.onSaveInstanceState(outState);
     }
 
@@ -613,6 +673,10 @@ public class CounterMainFragment extends Fragment {
         /**
          * сделать сохранение
          */
+        counterItem.title = binding.counterTitle.getText().toString();
+        counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+        counterItem.progress = binding.counterProgress.getProgress();
+        counterViewModel.update(counterItem);
         super.onStop();
     }
 
@@ -621,6 +685,10 @@ public class CounterMainFragment extends Fragment {
         /**
          * сделать сохранение
          */
+        counterItem.title = binding.counterTitle.getText().toString();
+        counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+        counterItem.progress = binding.counterProgress.getProgress();
+        counterViewModel.update(counterItem);
         super.onPause();
     }
 
@@ -629,6 +697,10 @@ public class CounterMainFragment extends Fragment {
         /**
          * сделать сохранение
          */
+        counterItem.title = binding.counterTitle.getText().toString();
+        counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+        counterItem.progress = binding.counterProgress.getProgress();
+        counterViewModel.update(counterItem);
         super.onDestroyView();
     }
 
@@ -637,7 +709,20 @@ public class CounterMainFragment extends Fragment {
         /**
          * сделать сохранение
          */
+        counterItem.title = binding.counterTitle.getText().toString();
+        counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+        counterItem.progress = binding.counterProgress.getProgress();
+        counterViewModel.update(counterItem);
         super.onDestroy();
+    }
+
+    @Override
+    public void onDetach() {
+        counterItem.title = binding.counterTitle.getText().toString();
+        counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+        counterItem.progress = binding.counterProgress.getProgress();
+        counterViewModel.update(counterItem);
+        super.onDetach();
     }
 
 }

@@ -32,6 +32,7 @@ public class CounterItem {
     swipe (no progressBar)
      */
 
+    @Ignore
     public CounterItem(String title, int target, int progress) {
         this.title = title;
         this.target = target;
@@ -46,7 +47,7 @@ public class CounterItem {
         this.mode = mode;
     }
 
-    @Ignore
+    //@Ignore
     public CounterItem(int id, String title, int target, int progress) {
         this.id = id;
         this.title = title;

@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import java.util.concurrent.TimeUnit;
 
 import ru.tabiin.counters.R;
 import ru.tabiin.counters.databinding.FragmentGestureCounterBinding;
+import ru.tabiin.counters.domain.models.CounterItem;
 import ru.tabiin.counters.ui.main.MainFragment;
 import ru.tabiin.counters.ui.settings.SettingsFragment;
 import ru.tabiin.counters.ui.settings.TutorialFragment;
@@ -33,6 +35,8 @@ public class GestureCounterFragment extends Fragment {
     CounterMainFragment cmf;
     CounterBetaFragment cbf;
     private String selectMode = "Circle counter";
+    private CounterItem counterItem;
+    private CounterViewModel counterViewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,16 +45,26 @@ public class GestureCounterFragment extends Fragment {
         binding = FragmentGestureCounterBinding
                 .inflate(inflater, container, false);
 
+        counterViewModel = new ViewModelProvider(this,
+                (ViewModelProvider.Factory) ViewModelProvider.AndroidViewModelFactory
+                        .getInstance(getActivity().getApplication()))
+                .get(CounterViewModel.class);
+
         Bundle bundle = getArguments();
         if (bundle != null) {
             String title = bundle.getString("title");
             int target = bundle.getInt("target");
             int progress = bundle.getInt("progress");
+            int id = bundle.getInt("id");
 
             binding.counterTitle.setText(title);
             binding.counterTarget.setText(Integer.toString(target));
             counter = progress;
             binding.gestureCounter.setText(Integer.toString(counter));
+
+
+            counterItem = new CounterItem(id, title, target, progress);
+
         }
 
         cmf = new CounterMainFragment();
@@ -68,12 +82,32 @@ public class GestureCounterFragment extends Fragment {
             /**
              * сделать сохранение
              */
+            counterItem.title = binding.counterTitle.getText().toString();
+            counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+            counterItem.progress = counter;
+            counterViewModel.update(counterItem);
         });
 
         binding.changeCounterModeBtn.setOnClickListener(v -> {
             changeModeCounterAlert();
             /**
              * сделать сохранение
+             */
+            counterItem.title = binding.counterTitle.getText().toString();
+            counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+            counterItem.progress = counter;
+            counterViewModel.update(counterItem);
+        });
+
+
+        binding.deleteCounter.setOnClickListener(view -> {
+            removeCounterAlert();
+            /*
+            counterItem.title = binding.counterTitle.getText().toString();
+            counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+            counterItem.progress = counter;
+            counterViewModel.delete(counterItem);
+
              */
         });
 
@@ -86,6 +120,10 @@ public class GestureCounterFragment extends Fragment {
             /**
              * сделать сохранение
              */
+            counterItem.title = binding.counterTitle.getText().toString();
+            counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+            counterItem.progress = counter;
+            counterViewModel.update(counterItem);
         });
 
         binding.openTutorialBtn.setOnClickListener(view -> {
@@ -97,6 +135,10 @@ public class GestureCounterFragment extends Fragment {
             /**
              * сделать сохранение
              */
+            counterItem.title = binding.counterTitle.getText().toString();
+            counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+            counterItem.progress = counter;
+            counterViewModel.update(counterItem);
         });
 
         binding.counterGestureView.setOnTouchListener(
@@ -110,6 +152,10 @@ public class GestureCounterFragment extends Fragment {
                         /**
                          * сделать сохранение
                          */
+                        counterItem.title = binding.counterTitle.getText().toString();
+                        counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+                        counterItem.progress = counter;
+                        counterViewModel.update(counterItem);
                     }
 
                     @Override
@@ -119,6 +165,10 @@ public class GestureCounterFragment extends Fragment {
                         /**
                          * сделать сохранение
                          */
+                        counterItem.title = binding.counterTitle.getText().toString();
+                        counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+                        counterItem.progress = counter;
+                        counterViewModel.update(counterItem);
                     }
 
                     @Override
@@ -129,6 +179,10 @@ public class GestureCounterFragment extends Fragment {
                         /**
                          * сделать сохранение
                          */
+                        counterItem.title = binding.counterTitle.getText().toString();
+                        counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+                        counterItem.progress = counter;
+                        counterViewModel.update(counterItem);
                     }
 
                 });
@@ -180,6 +234,10 @@ public class GestureCounterFragment extends Fragment {
                 Integer.parseInt(binding.counterTarget.getText().toString()));
         bundle.putInt("progress",
                 Integer.parseInt(binding.gestureCounter.getText().toString()));
+        counterItem.title = binding.counterTitle.getText().toString();
+        counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+        counterItem.progress = counter;
+        counterViewModel.update(counterItem);
 
         final String[] counterModes = {"Linear counter", "Circle counter", "Swipe counter"};
         new MaterialAlertDialogBuilder(requireContext(),
@@ -188,8 +246,6 @@ public class GestureCounterFragment extends Fragment {
                 //.setMessage("Выберете новый режим")
                 .setSingleChoiceItems(counterModes, 2, (dialogInterface, i) -> {
                     selectMode = counterModes[i];
-                    Snackbar.make(requireView(), "Вы выбрали " + selectMode,
-                            BaseTransientBottomBar.LENGTH_SHORT).show();
                 })
                 .setPositiveButton("Сменить", (dialogInterface, i) -> {
                     if (selectMode == "Linear counter") {
@@ -204,6 +260,35 @@ public class GestureCounterFragment extends Fragment {
                     } else if (selectMode == "Swipe counter") {
                         dialogInterface.cancel();
                     }
+
+                    Snackbar.make(requireView(), "Вы выбрали " + selectMode,
+                            BaseTransientBottomBar.LENGTH_SHORT).show();
+                })
+
+
+                .setNeutralButton("Отмена",
+                        (dialogInterface, i) ->
+                                dialogInterface.cancel())
+                .show();
+    }
+
+    public void removeCounterAlert() {
+        new MaterialAlertDialogBuilder(requireContext(),
+                R.style.AlertDialogTheme)
+                .setTitle("Remove")
+                .setMessage("Вы уверены, что хотите удалить счетчик? " +
+                        "Чтобы удалить счетчик, вернитесь на главную страницу")
+                .setPositiveButton("Удалить", (dialogInterface, i) -> {
+                    counterItem.title = binding.counterTitle.getText().toString();
+                    counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+                    counterItem.progress = counter;
+                    
+                    changeFragment(requireActivity(),
+                            new MainFragment(),
+                            R.id.containerFragment,
+                            null
+                    );
+                    counterViewModel.delete(counterItem);
                 })
                 .setNeutralButton("Отмена",
                         (dialogInterface, i) ->
@@ -216,6 +301,10 @@ public class GestureCounterFragment extends Fragment {
         /**
          * сделать сохранение
          */
+        counterItem.title = binding.counterTitle.getText().toString();
+        counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+        counterItem.progress = counter;
+        counterViewModel.update(counterItem);
         super.onSaveInstanceState(outState);
     }
 
@@ -224,6 +313,10 @@ public class GestureCounterFragment extends Fragment {
         /**
          * сделать сохранение
          */
+        counterItem.title = binding.counterTitle.getText().toString();
+        counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+        counterItem.progress = counter;
+        counterViewModel.update(counterItem);
         super.onStop();
     }
 
@@ -232,6 +325,10 @@ public class GestureCounterFragment extends Fragment {
         /**
          * сделать сохранение
          */
+        counterItem.title = binding.counterTitle.getText().toString();
+        counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+        counterItem.progress = counter;
+        counterViewModel.update(counterItem);
         super.onPause();
     }
 
@@ -240,6 +337,10 @@ public class GestureCounterFragment extends Fragment {
         /**
          * сделать сохранение
          */
+        counterItem.title = binding.counterTitle.getText().toString();
+        counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+        counterItem.progress = counter;
+        counterViewModel.update(counterItem);
         super.onDestroyView();
     }
 
@@ -248,7 +349,20 @@ public class GestureCounterFragment extends Fragment {
         /**
          * сделать сохранение
          */
+        counterItem.title = binding.counterTitle.getText().toString();
+        counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+        counterItem.progress = counter;
+        counterViewModel.update(counterItem);
         super.onDestroy();
+    }
+
+    @Override
+    public void onDetach() {
+        counterItem.title = binding.counterTitle.getText().toString();
+        counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+        counterItem.progress = counter;
+        counterViewModel.update(counterItem);
+        super.onDetach();
     }
 
 }
