@@ -22,7 +22,7 @@ public interface CounterDao {
     CounterItem findByName(String title);
 
     @Query("SELECT * FROM counters WHERE title LIKE :title")
-    CounterItem findByNames(String[] title);
+    List<CounterItem> findByNames(String title);
 
     @Query("SELECT * FROM counters WHERE id = :id")
     List<CounterItem> getCounterID(long id);

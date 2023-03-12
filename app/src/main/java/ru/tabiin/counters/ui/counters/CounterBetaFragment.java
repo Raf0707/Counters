@@ -504,6 +504,7 @@ public class CounterBetaFragment extends Fragment {
                 .setPositiveButton("Сменить", (dialogInterface, i) -> {
                     if (selectMode == "Linear counter") {
                         cmf.setArguments(bundle);
+
                         fragmentManager.beginTransaction()
                                 .replace(R.id.containerFragment, cmf).commit();
                     } else if (selectMode == "Circle counter") {

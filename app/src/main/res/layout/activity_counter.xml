@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.counters.CounterActivity"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Base_ToolbarStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/openCounterListBtn"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        app:cornerRadius="28dp"
+        app:icon="@drawable/ic_baseline_format_list_bulleted_24"
+        app:iconGravity="textEnd"
+        app:iconSize="50dp"
+        app:iconTint="@color/white" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/changeCounterModeBtn"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            app:cornerRadius="28dp"
+            app:icon="@drawable/ic_baseline_published_with_changes_24"
+            app:iconGravity="textEnd"
+            app:iconSize="50dp"
+            app:iconTint="@color/white" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/deleteCounterBtn"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            app:cornerRadius="28dp"
+            app:icon="@drawable/baseline_delete_forever_24"
+            app:iconGravity="textEnd"
+            app:iconSize="50dp"
+            app:iconTint="@color/white" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveCounterEditions"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:visibility="visible"
+            app:cornerRadius="28dp"
+            app:icon="@drawable/ic_baseline_check_24"
+            app:iconGravity="textEnd"
+            app:iconSize="50dp"
+            app:iconTint="@color/white" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/openTutorialBtn"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            app:cornerRadius="28dp"
+            app:icon="@drawable/ic_vector_info"
+            app:iconGravity="textEnd"
+            app:iconSize="50dp"
+            app:iconTint="@color/white" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/openSettingsBtn"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            app:cornerRadius="28dp"
+            app:icon="@drawable/ic_baseline_settings_24"
+            app:iconGravity="textEnd"
+            app:iconSize="50dp"
+            app:iconTint="@color/white" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <FrameLayout
+        android:id="@+id/containerCountersFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+
+</LinearLayout>

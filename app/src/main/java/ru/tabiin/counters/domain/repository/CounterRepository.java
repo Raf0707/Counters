@@ -31,6 +31,9 @@ public class CounterRepository {
     public List<CounterItem> getAllData() {
         return counterlist;
     }
+    public List<CounterItem> findByName(String title) {
+        return counterDao.findByNames(title);
+    }
 
     private static class InsertTask extends AsyncTask<CounterItem, Void, Void> {
         private CounterDao сounterDao;

@@ -28,6 +28,7 @@ import ru.tabiin.counters.adapters.CounterAdapter;
 import ru.tabiin.counters.databinding.FragmentMainBinding;
 import ru.tabiin.counters.domain.database.CounterDatabase;
 import ru.tabiin.counters.domain.models.CounterItem;
+import ru.tabiin.counters.ui.counters.CounterActivity;
 import ru.tabiin.counters.ui.counters.CounterMainFragment;
 import ru.tabiin.counters.ui.counters.CounterViewModel;
 
@@ -158,9 +159,10 @@ public class MainFragment extends Fragment implements CounterAdapter.HandleCount
                         .getText().toString());
                 counterViewModel.update(counterForEdit);
             } else {
-                counterViewModel.insert(counterTitle.getText().toString(),
-                        Integer.parseInt(counterTarget.getText().toString()));
+
             }
+
+            startActivity(new Intent(getContext(), CounterActivity.class));
         });
 
         alert.setView(dialogView);
@@ -225,8 +227,9 @@ public class MainFragment extends Fragment implements CounterAdapter.HandleCount
         bundle.putInt("progress", counterItem.progress);
         bundle.putInt("id", counterItem.id);
         cmf.setArguments(bundle);
-        fragmentManager.beginTransaction()
-                .replace(R.id.containerFragment, cmf).commit();
+        //fragmentManager.beginTransaction()
+                //.replace(R.id.containerFragment, cmf).commit();
+        startActivity(new Intent(getContext(), CounterActivity.class));
 
         Snackbar.make(binding.getRoot(), String.valueOf(counterItem.id),
                 Snackbar.LENGTH_LONG).show();

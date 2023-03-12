@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/openCounterListBtn"
+        style="@style/Widget.Material3.Button.IconButton"
+        app:icon="@drawable/ic_baseline_format_list_bulleted_24"
+        app:tint="@color/white"
+        app:showAsAction="ifRoom"
+        android:title="" />
+
+    <item
+        android:id="@+id/changeCounterModeBtn"
+        app:showAsAction="ifRoom"
+        android:title=""/>
+</menu>
