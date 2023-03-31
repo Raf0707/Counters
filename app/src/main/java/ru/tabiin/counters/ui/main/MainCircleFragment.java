@@ -13,9 +13,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.lang.ref.WeakReference;
@@ -26,20 +28,23 @@ import java.util.Random;
 import ru.tabiin.counters.R;
 import ru.tabiin.counters.adapters.CounterAdapter;
 import ru.tabiin.counters.databinding.FragmentMainBinding;
+import ru.tabiin.counters.databinding.FragmentMainCircleBinding;
 import ru.tabiin.counters.domain.database.CounterDatabase;
 import ru.tabiin.counters.domain.models.CounterItem;
-import ru.tabiin.counters.ui.counters.CounterActivity;
-import ru.tabiin.counters.ui.counters.CounterMainFragment;
-import ru.tabiin.counters.ui.counters.CounterViewModel;
+import ru.tabiin.counters.ui.counters.circle_progress.CounterBetaFragment;
+import ru.tabiin.counters.ui.counters.counter_progress.CounterMainFragment;
+import ru.tabiin.counters.ui.counters.counter_progress.CounterViewModel;
 
-public class MainFragment extends Fragment implements CounterAdapter.HandleCounterClick {
-
+public class MainCircleFragment extends Fragment implements CounterAdapter.HandleCounterClick {
+    FragmentMainCircleBinding binding;
     private CounterAdapter counterAdapter;
-    public static WeakReference<MainFragment> ctx = null;
+    public static WeakReference<MainProgressFragment> ctx = null;
     private List<CounterItem> counterlist = new ArrayList<>();
     private CounterViewModel counterViewModel;
     private CounterItem counterForEdit;
-    private CounterMainFragment cmf;
+    //private CounterMainFragment counterMainFragment;
+    private CounterBetaFragment counterBetaFragment;
+    //private GestureCounterFragment gestureCounterFragment;
     private CounterDatabase counterDatabase;
     private CounterAdapter.MyViewHolder holder;
     private boolean edit;
@@ -47,19 +52,15 @@ public class MainFragment extends Fragment implements CounterAdapter.HandleCount
     private int target;
     private int progress;
     private int id;
-    FragmentMainBinding binding;
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
+    private CounterItem counterItem;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        binding = FragmentMainCircleBinding.inflate(getLayoutInflater());
 
-        binding = FragmentMainBinding.inflate(getLayoutInflater());
-
-        cmf = new CounterMainFragment();
+        //counterMainFragment = new CounterMainFragment();
+        counterBetaFragment = new CounterBetaFragment();
+        //gestureCounterFragment = new GestureCounterFragment();
 
         counterAdapter = new CounterAdapter(getContext(), this);
 
@@ -68,21 +69,41 @@ public class MainFragment extends Fragment implements CounterAdapter.HandleCount
                         .getInstance(getActivity().getApplication()))
                 .get(CounterViewModel.class);
 
-        /*
+
+
         Bundle bundle = getArguments();
         if (bundle != null) {
-            title = bundle.getString("title", "title");
-            target = bundle.getInt("target", 10);
-            progress = bundle.getInt("progress", 0);
+            title = bundle.getString("title", counterItem.title);
+            target = bundle.getInt("target", counterItem.target);
+            progress = bundle.getInt("progress", counterItem.progress);
             id = bundle.getInt("id");
+
+            counterItem = new CounterItem(id, title, target, progress);
+            counterViewModel.update(counterItem);
         }
-
-         */
-
-        ctx = new WeakReference<>(this);
 
         binding.fabAddCounter.setOnClickListener(v -> {
             onMaterialAlert(false);
+        });
+
+        binding.searchCounters.clearFocus();
+        binding.searchCounters.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                //filterList(s);
+                //counterDatabase.counterDao().findByNames(binding.searchCounters)
+                counterViewModel.findByNames(s);
+                return true;
+            }
+        });
+
+        binding.searchCounters.setOnClickListener(v -> {
+            binding.searchCounters.clearFocus();
         });
 
         initRecycleView();
@@ -159,10 +180,9 @@ public class MainFragment extends Fragment implements CounterAdapter.HandleCount
                         .getText().toString());
                 counterViewModel.update(counterForEdit);
             } else {
-
+                counterViewModel.insert(counterTitle.getText().toString(),
+                        Integer.parseInt(counterTarget.getText().toString()));
             }
-
-            startActivity(new Intent(getContext(), CounterActivity.class));
         });
 
         alert.setView(dialogView);
@@ -194,6 +214,28 @@ public class MainFragment extends Fragment implements CounterAdapter.HandleCount
         return sb.toString();
     }
 
+    private void filterList(String text) {
+        List<CounterItem> filteredList = new ArrayList<>();
+        for (CounterItem ci : counterlist) {
+            if (ci.getTitle().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(ci);
+            }
+
+            /*
+            if (Integer.parseInt(text) >= 1 && Integer.parseInt(text) <= 99) {
+                filteredList.add(names.get(Integer.parseInt(text) - 1));
+            }
+
+             */
+        }
+
+        if (filteredList.isEmpty()) {
+            Snackbar.make(binding.getRoot(), "Не найдено", BaseTransientBottomBar.LENGTH_SHORT);
+        } else {
+            counterAdapter.setFilteredList(filteredList);
+        }
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -220,19 +262,17 @@ public class MainFragment extends Fragment implements CounterAdapter.HandleCount
 
     @Override
     public void itemClick(CounterItem counterItem) {
+
         Bundle bundle = new Bundle();
         FragmentManager fragmentManager = getFragmentManager();
         bundle.putString("title", counterItem.title);
         bundle.putInt("target", counterItem.target);
         bundle.putInt("progress", counterItem.progress);
         bundle.putInt("id", counterItem.id);
-        cmf.setArguments(bundle);
-        //fragmentManager.beginTransaction()
-                //.replace(R.id.containerFragment, cmf).commit();
-        startActivity(new Intent(getContext(), CounterActivity.class));
+        counterBetaFragment.setArguments(bundle);
 
-        Snackbar.make(binding.getRoot(), String.valueOf(counterItem.id),
-                Snackbar.LENGTH_LONG).show();
+        getParentFragmentManager().beginTransaction()
+                .replace(R.id.containerFragment, counterBetaFragment).commit();
 
     }
 
@@ -246,5 +286,4 @@ public class MainFragment extends Fragment implements CounterAdapter.HandleCount
         this.counterForEdit = counterItem;
         onMaterialAlert(true);
     }
-
 }

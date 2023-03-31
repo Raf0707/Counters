@@ -1,4 +1,4 @@
-package ru.tabiin.counters.ui.counters;
+package ru.tabiin.counters.ui.counters.swipe_counter;
 
 import static ru.tabiin.counters.util.UtilFragment.changeFragment;
 
@@ -22,7 +22,10 @@ import java.util.concurrent.TimeUnit;
 import ru.tabiin.counters.R;
 import ru.tabiin.counters.databinding.FragmentGestureCounterBinding;
 import ru.tabiin.counters.domain.models.CounterItem;
-import ru.tabiin.counters.ui.main.MainFragment;
+import ru.tabiin.counters.ui.counters.circle_progress.CounterBetaFragment;
+import ru.tabiin.counters.ui.counters.counter_progress.CounterMainFragment;
+import ru.tabiin.counters.ui.counters.counter_progress.CounterViewModel;
+import ru.tabiin.counters.ui.main.MainProgressFragment;
 import ru.tabiin.counters.ui.settings.SettingsFragment;
 import ru.tabiin.counters.ui.settings.TutorialFragment;
 import ru.tabiin.counters.util.OnSwipeTouchListener;
@@ -113,7 +116,7 @@ public class GestureCounterFragment extends Fragment {
 
         binding.openCounterListBtn.setOnClickListener(view -> {
             changeFragment(requireActivity(),
-                    new MainFragment(),
+                    new MainProgressFragment(),
                     R.id.containerFragment,
                     savedInstanceState
             );
@@ -153,7 +156,8 @@ public class GestureCounterFragment extends Fragment {
                          * сделать сохранение
                          */
                         counterItem.title = binding.counterTitle.getText().toString();
-                        counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+                        counterItem.target = Integer.parseInt(binding.counterTarget
+                                .getText().toString());
                         counterItem.progress = counter;
                         counterViewModel.update(counterItem);
                     }
@@ -166,7 +170,8 @@ public class GestureCounterFragment extends Fragment {
                          * сделать сохранение
                          */
                         counterItem.title = binding.counterTitle.getText().toString();
-                        counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+                        counterItem.target = Integer.parseInt(binding.counterTarget
+                                .getText().toString());
                         counterItem.progress = counter;
                         counterViewModel.update(counterItem);
                     }
@@ -180,13 +185,15 @@ public class GestureCounterFragment extends Fragment {
                          * сделать сохранение
                          */
                         counterItem.title = binding.counterTitle.getText().toString();
-                        counterItem.target = Integer.parseInt(binding.counterTarget.getText().toString());
+                        counterItem.target = Integer.parseInt(binding.counterTarget
+                                .getText().toString());
                         counterItem.progress = counter;
                         counterViewModel.update(counterItem);
                     }
 
                 });
 
+        /*
         Thread t = new Thread(() -> {
             try{
                 TimeUnit.MILLISECONDS.sleep(100);
@@ -198,15 +205,20 @@ public class GestureCounterFragment extends Fragment {
 
         t.start();
 
+         */
+
         return binding.getRoot();
     }
 
+    /*
     Runnable r = new Runnable() {
         public void run(){
             binding.gestureCounter.setText(Integer.toString(counter));
             handler.postDelayed(r,100);
         }
     };
+
+     */
 
     public void onMaterialAlert() {
         new MaterialAlertDialogBuilder(requireContext(),
@@ -284,7 +296,7 @@ public class GestureCounterFragment extends Fragment {
                     counterItem.progress = counter;
                     
                     changeFragment(requireActivity(),
-                            new MainFragment(),
+                            new MainProgressFragment(),
                             R.id.containerFragment,
                             null
                     );

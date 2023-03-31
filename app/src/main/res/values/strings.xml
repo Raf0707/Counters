@@ -51,4 +51,6 @@
     <string name="previous">Previous</string>
     <string name="tabiin_android_dev" translatable="false">https://vk.com/@tabiin_muslim_planner-tabiin-android-development</string>
     <string name="rateApp">https://apps.rustore.ru/app/ru.tabiin.ramadan</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

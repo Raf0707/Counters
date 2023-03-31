@@ -10,7 +10,9 @@ import com.google.android.material.color.DynamicColors;
 
 import ru.tabiin.counters.databinding.ActivityMainBinding;
 import ru.tabiin.counters.ui.about_app.AppAboutFragment;
-import ru.tabiin.counters.ui.main.MainFragment;
+import ru.tabiin.counters.ui.main.MainCircleFragment;
+import ru.tabiin.counters.ui.main.MainProgressFragment;
+import ru.tabiin.counters.ui.main.MainSwipeFragment;
 import ru.tabiin.counters.util.SharedPreferencesUtils;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.containerFragment, new MainFragment())
+                    .replace(R.id.containerFragment, new MainProgressFragment())
                     .commit();
         }
 
@@ -42,10 +44,26 @@ public class MainActivity extends AppCompatActivity {
 
         binding.navView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
-                case R.id.counters:
+                case R.id.counter_progress:
 
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.containerFragment, new MainFragment())
+                            .replace(R.id.containerFragment, new MainProgressFragment())
+                            .commit();
+
+                    return true;
+
+                case R.id.counter_circle:
+
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.containerFragment, new MainCircleFragment())
+                            .commit();
+
+                    return true;
+
+                case R.id.counter_swipe:
+
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.containerFragment, new MainSwipeFragment())
                             .commit();
 
                     return true;

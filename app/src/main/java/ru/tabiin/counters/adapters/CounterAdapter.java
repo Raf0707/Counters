@@ -76,6 +76,11 @@ public class CounterAdapter extends RecyclerView.Adapter<CounterAdapter.MyViewHo
         }
     }
 
+    public void setFilteredList(List<CounterItem> filteredList) {
+        this.counterList = filteredList;
+        notifyDataSetChanged();
+    }
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
         CounterItemElementBinding binding;
         public MyViewHolder(@NonNull View itemView) {

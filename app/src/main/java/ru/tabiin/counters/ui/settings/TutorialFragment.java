@@ -14,7 +14,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import ru.tabiin.counters.R;
 import ru.tabiin.counters.databinding.FragmentTutorialBinding;
-import ru.tabiin.counters.ui.main.MainFragment;
+import ru.tabiin.counters.ui.main.MainProgressFragment;
 
 public class TutorialFragment extends Fragment {
     FragmentTutorialBinding binding;
@@ -26,7 +26,7 @@ public class TutorialFragment extends Fragment {
 
         binding.backToCounterSaves.setOnClickListener(v -> {
             changeFragment(requireActivity(),
-                    new MainFragment(),
+                    new MainProgressFragment(),
                     R.id.containerFragment,
                     savedInstanceState
             );
@@ -48,7 +48,7 @@ public class TutorialFragment extends Fragment {
                     .show();
         });
 
-        binding.deleteCounterBtn.setOnClickListener(v -> {
+        binding.deleteDBCounterItem.setOnClickListener(v -> {
             Snackbar.make(binding.getRoot(),
                     "удалить счетчик", Snackbar.LENGTH_SHORT)
                     .setAction("понятно", view -> Toast.makeText(getContext(),

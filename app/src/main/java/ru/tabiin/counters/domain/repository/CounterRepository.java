@@ -3,6 +3,9 @@ package ru.tabiin.counters.domain.repository;
 import android.app.Application;
 import android.os.AsyncTask;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
 import java.util.List;
 
 import ru.tabiin.counters.domain.dao.CounterDao;
@@ -11,12 +14,12 @@ import ru.tabiin.counters.domain.models.CounterItem;
 
 public class CounterRepository {
     private CounterDao counterDao;
-    private List<CounterItem> counterlist;
+    private LiveData<List<CounterItem>> counterlist;
 
     public CounterRepository(Application application) {
         CounterDatabase counterDatabase = CounterDatabase.getInstance(application);
         counterDao = counterDatabase.counterDao();
-        counterlist = counterDao.getAllCounters();
+        counterlist = (LiveData<List<CounterItem>>) counterDao.getAllCounters();
     }
 
     public void insertData(CounterItem counterItem) {
@@ -28,7 +31,7 @@ public class CounterRepository {
     public void deleteData(CounterItem counterItem) {
         new DeleteTask(counterDao).execute(counterItem);
     }
-    public List<CounterItem> getAllData() {
+    public LiveData<List<CounterItem>> getAllData() {
         return counterlist;
     }
     public List<CounterItem> findByName(String title) {

@@ -5,12 +5,48 @@
         android:id="@+id/openCounterListBtn"
         style="@style/Widget.Material3.Button.IconButton"
         app:icon="@drawable/ic_baseline_format_list_bulleted_24"
-        app:tint="@color/white"
+        app:tint="?attr/colorPrimary"
         app:showAsAction="ifRoom"
         android:title="" />
 
     <item
         android:id="@+id/changeCounterModeBtn"
+        style="@style/Widget.Material3.Button.IconButton"
         app:showAsAction="ifRoom"
+        app:icon="@drawable/ic_baseline_published_with_changes_24"
+        app:tint="?attr/colorPrimary"
         android:title=""/>
+
+    <item
+        android:id="@+id/deleteCounterBtn"
+        style="@style/Widget.Material3.Button.IconButton"
+        app:showAsAction="ifRoom"
+        app:icon="@drawable/baseline_delete_forever_24"
+        app:tint="?attr/colorPrimary"
+        android:title="" />
+
+    <item
+        android:id="@+id/saveCounterEditions"
+        style="@style/Widget.Material3.Button.IconButton"
+        app:icon="@drawable/ic_baseline_check_24"
+        app:tint="?attr/colorPrimary"
+        app:showAsAction="ifRoom"
+        android:title="" />
+
+    <item
+        android:id="@+id/saveCounterEditions"
+        style="@style/Widget.Material3.Button.IconButton"
+        app:icon="@drawable/ic_baseline_check_24"
+        app:tint="?attr/colorPrimary"
+        app:showAsAction="ifRoom"
+        android:title="" />
+
+    <item
+        android:id="@+id/saveCounterEditions"
+        style="@style/Widget.Material3.Button.IconButton"
+        app:icon="@drawable/ic_baseline_check_24"
+        app:tint="?attr/colorPrimary"
+        app:showAsAction="ifRoom"
+        android:title="" />
+
 </menu>

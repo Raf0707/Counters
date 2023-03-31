@@ -1,5 +1,6 @@
 package ru.tabiin.counters.domain.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -13,7 +14,7 @@ import ru.tabiin.counters.domain.models.CounterItem;
 @Dao
 public interface CounterDao {
     @Query("SELECT * FROM counters")
-    List<CounterItem> getAllCounters();
+    LiveData<List<CounterItem>> getAllCounters();
 
     @Query("SELECT * FROM counters WHERE id IN (:userIds)")
     List<CounterItem> loadAllByIds(int[] userIds);

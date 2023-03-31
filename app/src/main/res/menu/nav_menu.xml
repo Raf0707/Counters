@@ -3,9 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/counters"
-        android:icon="@drawable/baseline_task_alt_24"
-        android:title="Счетчики" />
+        android:id="@+id/counter_progress"
+        android:icon="@drawable/baseline_linear_scale_24"
+        android:title="Linear" />
+
+    <item
+        android:id="@+id/counter_circle"
+        android:icon="@drawable/baseline_incomplete_circle_24"
+        android:title="Circle" />
+
+    <item
+        android:id="@+id/counter_swipe"
+        android:icon="@drawable/baseline_swipe_24"
+        android:title="Swipe" />
 
     <item
         android:id="@+id/about_app"

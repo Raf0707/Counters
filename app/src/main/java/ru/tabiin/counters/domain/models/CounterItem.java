@@ -5,8 +5,10 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(tableName = "counters")
-public class CounterItem {
+public class CounterItem implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     public int id;
@@ -23,14 +25,8 @@ public class CounterItem {
     @ColumnInfo(name = "completed")
     public boolean completed;
 
-    @ColumnInfo(name = "mode")
-    public String mode = "linear";
-    /*
-    3 counter modes:
-    linear (linear progressBar)
-    circle (circle progressBar)
-    swipe (no progressBar)
-     */
+    @ColumnInfo(name = "counterType")
+    public CounterType counterType;
 
     @Ignore
     public CounterItem(String title, int target, int progress) {
@@ -40,11 +36,11 @@ public class CounterItem {
     }
 
     @Ignore
-    public CounterItem(String title, int target, int progress, String mode) {
+    public CounterItem(String title, int target, int progress, CounterType counterType) {
         this.title = title;
         this.target = target;
         this.progress = progress;
-        this.mode = mode;
+        this.counterType = counterType;
     }
 
     //@Ignore
@@ -56,12 +52,12 @@ public class CounterItem {
     }
 
     @Ignore
-    public CounterItem(int id, String title, int target, int progress, String mode) {
+    public CounterItem(int id, String title, int target, int progress, CounterType counterType) {
         this.id = id;
         this.title = title;
         this.target = target;
         this.progress = progress;
-        this.mode = mode;
+        this.counterType = counterType;
     }
 
     public String getTitle() {
@@ -104,13 +100,23 @@ public class CounterItem {
         this.completed = completed;
     }
 
-    public String getMode() {
-        return mode;
+    public CounterType getCounterType() {
+        return counterType;
     }
 
-    public void setMode(String mode) {
-        this.mode = mode;
+    public void setCounterType(CounterType counterType) {
+        this.counterType = counterType;
     }
 
-
+    @Override
+    public String toString() {
+        return "CounterItem{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", target=" + target +
+                ", progress=" + progress +
+                ", completed=" + completed +
+                ", counterType=" + counterType +
+                '}';
+    }
 }
