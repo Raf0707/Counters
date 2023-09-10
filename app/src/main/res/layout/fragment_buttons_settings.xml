@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.settings.ButtonsSettingsFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollSettings"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardUseCompatPadding="true"
+                android:paddingTop="10dp"
+                style="@style/Widget.Material3.CardView.Elevated">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Настройки кнопок"
+                        android:textSize="21sp"
+                        android:padding="10dp"
+                        android:textStyle="bold"/>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        style="@style/Widget.Material3.CompoundButton.MaterialSwitch"
+                        android:id="@+id/vibratorBtnsSwitch"
+                        android:enabled="true"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="8dp"
+                        android:text="Вибрация при нажатии"
+                        android:textSize="18sp"/>
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/clickVibrateSlider"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+
+                    <RadioGroup
+                        android:id="@+id/clickVibratorRadioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="20dp">
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/fullVibration"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Вибрация на все кнопки"
+                            android:textSize="18sp"/>
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/partVibration"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Частичная вибрация"
+                            android:textSize="18sp"/>
+
+                    </RadioGroup>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        style="@style/Widget.Material3.CompoundButton.MaterialSwitch"
+                        android:id="@+id/vibratorCounterBtnsSwitch"
+                        android:enabled="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="8dp"
+                        android:text="Вибрация на кнопки счетчика"
+                        android:textSize="18sp"/>
+
+                    <LinearLayout
+                        android:id="@+id/counterBtnsCheckVibrateLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="50dp">
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/plusBtnSetVib"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="+"/>
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/minusBtnSetVib"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="-"/>
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/resetBtnSetVib"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="reset"/>
+
+                    </LinearLayout>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        style="@style/Widget.Material3.CompoundButton.MaterialSwitch"
+                        android:id="@+id/vibratorToolBarBtnSwitch"
+                        android:enabled="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="8dp"
+                        android:text="Вибрация на кнопки управления"
+                        android:textSize="18sp"/>
+
+                    <LinearLayout
+                        android:id="@+id/toolbarBtnsCheckVibrateLayoutRight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="50dp">
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/settingsBtnSetVib"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="settings"/>
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/tutorialBtnSetVib"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="tutorial"/>
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/saveBtnSetVib"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="save"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/toolbarBtnsCheckVibrateLayoutLeft"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="50dp">
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/editBtnSetVib"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="edit"/>
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/deleteBtnSetVib"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="delete"/>
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/listBtnSetVib"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="list"/>
+
+                    </LinearLayout>
+
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        style="@style/Widget.Material3.CompoundButton.MaterialSwitch"
+                        android:id="@+id/clickVibratorEndSwitch"
+                        android:enabled="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="8dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:text="Вибрация при завершении цели"
+                        android:textSize="18sp"/>
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/endTargetVibrateSlider"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        style="@style/Widget.Material3.CompoundButton.MaterialSwitch"
+                        android:id="@+id/clickListenerSwitch"
+                        android:enabled="true"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="8dp"
+                        android:text="Обработчик кликов"
+                        android:textSize="18sp"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textViewClickLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/textViewClick"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Обычный клик"
+                            android:layout_marginTop="20dp"
+                            android:padding="10dp"
+                            android:gravity="center"
+                            android:textSize="21sp"
+                            android:textStyle="bold"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/plusValLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Увеличить на "
+                        android:layout_marginLeft="20dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/plusValueClickInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:shadowColor="@color/purple_400"
+                            android:shadowDx="3"
+                            android:shadowDy="3"
+                            android:shadowRadius="1.6"
+                            android:textAllCaps="true"
+                            android:textColorHint="@color/white"
+                            android:textSize="18sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/minusValLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Уменьшить на "
+                        android:layout_marginLeft="20dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/minusValueClickInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:shadowColor="@color/purple_400"
+                            android:shadowDx="3"
+                            android:shadowDy="3"
+                            android:shadowRadius="1.6"
+                            android:textAllCaps="true"
+                            android:textColorHint="@color/white"
+                            android:textSize="18sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/resetValLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Обнулить до "
+                        android:layout_marginLeft="20dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/resetValueClickInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:shadowColor="@color/purple_400"
+                            android:shadowDx="3"
+                            android:shadowDy="3"
+                            android:shadowRadius="1.6"
+                            android:textAllCaps="true"
+                            android:textColorHint="@color/white"
+                            android:textSize="18sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/saveClickObserver"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Сохранить"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="60dp"
+                        android:layout_marginRight="60dp"
+                        style="?attr/materialButtonOutlinedStyle">
+                    </com.google.android.material.button.MaterialButton>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        style="@style/Widget.Material3.CompoundButton.MaterialSwitch"
+                        android:id="@+id/longPressSwitch"
+                        android:enabled="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="8dp"
+                        android:layout_marginTop="20dp"
+                        android:text="Обработчик долгих кликов"
+                        android:textSize="18sp"/>
+
+                    <RadioGroup
+                        android:id="@+id/longPressRadioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/oneLongClick"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:text="Одноразовый долгий клик"
+                            android:textSize="18sp"/>
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/regularLongClick"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:text="Постоянный долгий клик"
+                            android:textSize="18sp"/>
+
+                    </RadioGroup>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textViewLongClickLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/textViewLongClick"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Долгий клик"
+                            android:layout_marginTop="20dp"
+                            android:padding="10dp"
+                            android:gravity="center"
+                            android:textSize="21sp"
+                            android:textStyle="bold"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/plusValLongLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Увеличить на "
+                        android:layout_marginLeft="20dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/plusValueLongClickInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:shadowColor="@color/purple_400"
+                            android:shadowDx="3"
+                            android:shadowDy="3"
+                            android:shadowRadius="1.6"
+                            android:textAllCaps="true"
+                            android:textColorHint="@color/white"
+                            android:textSize="18sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/minusValLongLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Уменьшить на "
+                        android:layout_marginLeft="20dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/minusValueLongClickInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:shadowColor="@color/purple_400"
+                            android:shadowDx="3"
+                            android:shadowDy="3"
+                            android:shadowRadius="1.6"
+                            android:textAllCaps="true"
+                            android:textColorHint="@color/white"
+                            android:textSize="18sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/resetValLongLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Обнулить до "
+                        android:layout_marginLeft="20dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/resetValueLongClickInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:shadowColor="@color/purple_400"
+                            android:shadowDx="3"
+                            android:shadowDy="3"
+                            android:shadowRadius="1.6"
+                            android:textAllCaps="true"
+                            android:textColorHint="@color/white"
+                            android:textSize="18sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/saveLongClickObserver"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Сохранить"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="60dp"
+                        android:layout_marginRight="60dp"
+                        style="?attr/materialButtonOutlinedStyle">
+                    </com.google.android.material.button.MaterialButton>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>

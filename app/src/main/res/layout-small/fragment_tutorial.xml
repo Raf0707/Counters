@@ -8,35 +8,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.settings.TutorialFragment">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/backToCounterSaves"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_baseline_keyboard_backspace_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.02">
-
-    </com.google.android.material.button.MaterialButton>
-
-    <TextView
-        android:layout_width="111dp"
-        android:layout_height="46dp"
-        android:gravity="center"
-        android:text="назад"
-        android:textColor="@color/purple_300"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.166"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.02" />
-
 
     <TextView
         android:layout_width="match_parent"
@@ -234,17 +205,48 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.312" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Название цели"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:gravity="center"
+        android:text="Нажатие на экран: +1"
+        android:textColor="@color/purple_300"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.791" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:gravity="center"
+        android:text="Свайп вниз: -1"
+        android:textColor="@color/purple_300"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.872" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Долгое нажатие на экран: обновление счетчика"
+        android:textColor="@color/purple_300"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -82,6 +83,18 @@ public class MainCircleFragment extends Fragment implements CounterAdapter.Handl
             counterViewModel.update(counterItem);
         }
 
+        binding.recycleCounter.addOnScrollListener(
+                new RecyclerView.OnScrollListener() {
+                    @Override
+                    public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                        if (dy < 0 && !binding.fabAddCounter.isShown())
+                            binding.fabAddCounter.show();
+                        else if (dy > 0 && binding.fabAddCounter.isShown())
+                            binding.fabAddCounter.hide();
+                    }
+                }
+        );
+
         binding.fabAddCounter.setOnClickListener(v -> {
             onMaterialAlert(false);
         });
@@ -137,7 +150,7 @@ public class MainCircleFragment extends Fragment implements CounterAdapter.Handl
 
     public void onMaterialAlert(boolean isForEdit) {
         MaterialAlertDialogBuilder alert =
-                new MaterialAlertDialogBuilder(getContext());
+                new MaterialAlertDialogBuilder(requireContext());
 
         View dialogView = getLayoutInflater()
                 .inflate(R.layout.create_counter_dialog, null);

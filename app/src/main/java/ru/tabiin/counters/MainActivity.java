@@ -2,6 +2,9 @@ package ru.tabiin.counters;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.splashscreen.SplashScreen;
+import androidx.transition.Transition;
+import androidx.transition.TransitionInflater;
+import androidx.transition.TransitionManager;
 
 import android.os.Bundle;
 import android.view.Window;
@@ -24,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+
         App.instance.setNightMode();
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -42,9 +47,19 @@ public class MainActivity extends AppCompatActivity {
 
         appAboutFragment = new AppAboutFragment();
 
+        Transition fade = TransitionInflater.from(this).inflateTransition(android.R.transition.fade);
+        Transition explode = TransitionInflater.from(this).inflateTransition(android.R.transition.explode);
+        Transition slideTop = TransitionInflater.from(this).inflateTransition(android.R.transition.slide_top);
+        Transition slideBottom = TransitionInflater.from(this).inflateTransition(android.R.transition.slide_bottom);
+        Transition slideLeft = TransitionInflater.from(this).inflateTransition(android.R.transition.slide_left);
+        Transition slideRight = TransitionInflater.from(this).inflateTransition(android.R.transition.slide_right);
+
         binding.navView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.counter_progress:
+
+                    //transition2.setDuration(1000);
+                    //TransitionManager.beginDelayedTransition(fragmentContainer, transition);
 
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.containerFragment, new MainProgressFragment())

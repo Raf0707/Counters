@@ -134,7 +134,7 @@
         android:id="@+id/counterGestureView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="2120dp"
+        android:layout_marginTop="600dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

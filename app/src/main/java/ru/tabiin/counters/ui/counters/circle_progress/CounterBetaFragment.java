@@ -25,7 +25,6 @@ import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.text.MessageFormat;
-import java.util.concurrent.TimeUnit;
 
 import ru.tabiin.counters.R;
 import ru.tabiin.counters.databinding.FragmentCounterBetaBinding;
@@ -33,10 +32,10 @@ import ru.tabiin.counters.domain.models.CounterItem;
 import ru.tabiin.counters.ui.counters.swipe_counter.GestureCounterFragment;
 import ru.tabiin.counters.ui.counters.counter_progress.CounterMainFragment;
 import ru.tabiin.counters.ui.counters.counter_progress.CounterViewModel;
+import ru.tabiin.counters.ui.main.MainCircleFragment;
 import ru.tabiin.counters.ui.main.MainProgressFragment;
 import ru.tabiin.counters.ui.settings.SettingsFragment;
 import ru.tabiin.counters.ui.settings.TutorialFragment;
-import ru.tabiin.counters.util.CallBack;
 import ru.tabiin.counters.util.OnSwipeTouchListener;
 
 public class CounterBetaFragment extends Fragment {
@@ -54,6 +53,7 @@ public class CounterBetaFragment extends Fragment {
     private CounterItem counterItem;
     private CounterViewModel counterViewModel;
     private MainProgressFragment mainFragment;
+    private MainCircleFragment mainCircleFragment;
 
     private static final TimeInterpolator GAUGE_ANIMATION_INTERPOLATOR =
             new DecelerateInterpolator(2);
@@ -73,6 +73,7 @@ public class CounterBetaFragment extends Fragment {
                 .get(CounterViewModel.class);
 
         mainFragment = new MainProgressFragment();
+        mainCircleFragment = new MainCircleFragment();
 
 
         Bundle bundle = getArguments();
@@ -188,7 +189,7 @@ public class CounterBetaFragment extends Fragment {
             counterViewModel.update(counterItem);
 
             getParentFragmentManager().beginTransaction().replace(R.id.containerFragment,
-                    mainFragment).commit();
+                    mainCircleFragment).commit();
         });
 
         binding.counterBetaView.setOnTouchListener

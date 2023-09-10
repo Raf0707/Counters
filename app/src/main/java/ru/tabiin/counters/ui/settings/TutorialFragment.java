@@ -24,14 +24,6 @@ public class TutorialFragment extends Fragment {
 
         binding = FragmentTutorialBinding.inflate(getLayoutInflater());
 
-        binding.backToCounterSaves.setOnClickListener(v -> {
-            changeFragment(requireActivity(),
-                    new MainProgressFragment(),
-                    R.id.containerFragment,
-                    savedInstanceState
-            );
-        });
-
         binding.openCounterListBtn.setOnClickListener(v -> {
             Snackbar.make(binding.getRoot(),
                     "Список счетчиков", Snackbar.LENGTH_SHORT)

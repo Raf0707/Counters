@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.settings.TransitionsSettingsFragment">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp"
+        app:cardUseCompatPadding="true"
+        android:paddingBottom="10dp"
+        style="@style/Widget.Material3.CardView.Elevated">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Анимация смены фрагментов"
+                android:textSize="21sp"
+                android:textStyle="bold"/>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                style="@style/Widget.Material3.CompoundButton.MaterialSwitch"
+                android:id="@+id/animationTransactionSwitch"
+                android:enabled="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="8dp"
+                android:text="Transition animation"
+                android:textSize="18sp"/>
+
+            <RadioGroup
+                android:id="@+id/animationVariantsGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/fadeAnim"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="fade"
+                    android:textSize="18sp"/>
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/explodeAnim"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="explode"
+                    android:textSize="18sp"/>
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/slideTopAnim"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="slide top"
+                    android:textSize="18sp"/>
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/slideBottomAnim"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="slide bottom"
+                    android:textSize="18sp"/>
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/slideRightAnim"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="slide right"
+                    android:textSize="18sp"/>
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/slideLeftAnim"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="slide left"
+                    android:textSize="18sp"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</FrameLayout>
