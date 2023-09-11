@@ -31,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
 
         App.instance.setNightMode();
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        if (SharedPreferencesUtils.getBoolean(this, "useDynamicColors"))
+            DynamicColors.applyToActivityIfAvailable(this);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -39,8 +41,7 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
         }
 
-        if (SharedPreferencesUtils.getBoolean(this, "useDynamicColors"))
-            DynamicColors.applyToActivityIfAvailable(this);
+
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

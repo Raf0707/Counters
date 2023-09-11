@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,36 +38,41 @@ public class ThemeSettingsFragment extends Fragment {
 
         switchMaterial = b.dynamicColorsSwitch;
         b.appThemeRadioGroup.check(SharedPreferencesUtils.getInteger(requireContext(), "checkedButton", R.id.setFollowSystemTheme));
-        b.appThemeRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
-            switch (checkedId) {
-                case R.id.setFollowSystemTheme:
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-                    SharedPreferencesUtils.saveInteger(requireContext(), "checkedButton", R.id.setFollowSystemTheme);
-                    SharedPreferencesUtils.saveInteger(requireContext(), "nightMode", 1);
-                    requireActivity().recreate();
-                    break;
-                case R.id.setLightTheme:
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    SharedPreferencesUtils.saveInteger(requireContext(), "checkedButton", R.id.setLightTheme);
-                    SharedPreferencesUtils.saveInteger(requireContext(), "nightMode", 2);
-                    requireActivity().recreate();
-                    break;
-                case R.id.setNightTheme:
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    SharedPreferencesUtils.saveInteger(requireContext(), "checkedButton", R.id.setNightTheme);
-                    SharedPreferencesUtils.saveInteger(requireContext(), "nightMode", 3);
-                    requireActivity().recreate();
-                    break;
-            }
-        });
 
-        switchMaterial.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            DynamicColors.applyToActivitiesIfAvailable(requireActivity().getApplication());
-            DynamicColors.applyToActivitiesIfAvailable(requireActivity().getApplication(),
-                    R.style.Theme_Counters);
-            SharedPreferencesUtils.saveBoolean(requireContext(), "useDynamicColors", isChecked);
-            requireActivity().recreate();
-        });
+        b.appThemeRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+                    switch (checkedId) {
+                        case R.id.setFollowSystemTheme:
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+                            SharedPreferencesUtils.saveInteger(requireContext(), "checkedButton", R.id.setFollowSystemTheme);
+                            SharedPreferencesUtils.saveInteger(requireContext(), "nightMode", 0);
+                            requireActivity().recreate();
+                            break;
+                        case R.id.setLightTheme:
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                            SharedPreferencesUtils.saveInteger(requireContext(), "checkedButton", R.id.setLightTheme);
+                            SharedPreferencesUtils.saveInteger(requireContext(), "nightMode", 1);
+                            requireActivity().recreate();
+                            break;
+                        case R.id.setNightTheme:
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                            SharedPreferencesUtils.saveInteger(requireContext(), "checkedButton", R.id.setNightTheme);
+                            SharedPreferencesUtils.saveInteger(requireContext(), "nightMode", 2);
+                            requireActivity().recreate();
+                            break;
+                    }
+                });
+
+        try {
+            switchMaterial.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                //DynamicColors.applyToActivitiesIfAvailable(requireActivity().getApplication());
+                /*DynamicColors.applyToActivitiesIfAvailable(requireActivity().getApplication(),
+                        R.style.Theme_Counters);*/
+                SharedPreferencesUtils.saveBoolean(requireContext(), "useDynamicColors", isChecked);
+                requireActivity().recreate();
+            });
+        } catch (Exception e) {
+            Log.d("DYNAMIC_COLORS", e.getMessage());
+        }
 
     }
 }

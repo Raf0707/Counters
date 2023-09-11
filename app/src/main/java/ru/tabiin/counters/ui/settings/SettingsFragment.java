@@ -38,9 +38,9 @@ public class SettingsFragment extends Fragment {
         binding.vibratorCounterBtnsSwitch.setVisibility(View.GONE);
         binding.vibratorToolBarBtnSwitch.setVisibility(View.GONE);
         binding.clickVibratorEndSwitch.setVisibility(View.GONE);
-        binding.counterBtnsCheckVibrateLayout.setVisibility(View.GONE);
+        /*binding.counterBtnsCheckVibrateLayout.setVisibility(View.GONE);
         binding.toolbarBtnsCheckVibrateLayoutLeft.setVisibility(View.GONE);
-        binding.toolbarBtnsCheckVibrateLayoutRight.setVisibility(View.GONE);
+        binding.toolbarBtnsCheckVibrateLayoutRight.setVisibility(View.GONE);*/
         //assert binding.textViewClick != null;
         binding.textViewClickLayout.setVisibility(View.GONE);
         binding.plusValLayout.setVisibility(View.GONE);
@@ -152,9 +152,9 @@ public class SettingsFragment extends Fragment {
                     //full vibration
                     binding.vibratorToolBarBtnSwitch.setVisibility(View.GONE);
                     binding.vibratorCounterBtnsSwitch.setVisibility(View.GONE);
-                    binding.counterBtnsCheckVibrateLayout.setVisibility(View.GONE);
+                    /*binding.counterBtnsCheckVibrateLayout.setVisibility(View.GONE);
                     binding.toolbarBtnsCheckVibrateLayoutRight.setVisibility(View.GONE);
-                    binding.toolbarBtnsCheckVibrateLayoutLeft.setVisibility(View.GONE);
+                    binding.toolbarBtnsCheckVibrateLayoutLeft.setVisibility(View.GONE);*/
                     break;
                 case R.id.partVibration:
                     AlphaAnimation animation = new AlphaAnimation(0, 1);
@@ -171,23 +171,23 @@ public class SettingsFragment extends Fragment {
         binding.vibratorCounterBtnsSwitch.setOnCheckedChangeListener((v, isChecked) -> {
             if (isChecked) {
                 Animation animation = new AlphaAnimation(0, 1);
-                binding.counterBtnsCheckVibrateLayout.startAnimation(animation);
-                binding.counterBtnsCheckVibrateLayout.setVisibility(View.VISIBLE);
+                /*binding.counterBtnsCheckVibrateLayout.startAnimation(animation);
+                binding.counterBtnsCheckVibrateLayout.setVisibility(View.VISIBLE);*/
             } else {
-                binding.counterBtnsCheckVibrateLayout.setVisibility(View.GONE);
+                //binding.counterBtnsCheckVibrateLayout.setVisibility(View.GONE);
             }
         });
 
         binding.vibratorToolBarBtnSwitch.setOnCheckedChangeListener((v, isChecked) -> {
             if (isChecked) {
                 Animation animation = new AlphaAnimation(0, 1);
-                binding.toolbarBtnsCheckVibrateLayoutRight.startAnimation(animation);
+                /*binding.toolbarBtnsCheckVibrateLayoutRight.startAnimation(animation);
                 binding.toolbarBtnsCheckVibrateLayoutLeft.startAnimation(animation);
                 binding.toolbarBtnsCheckVibrateLayoutRight.setVisibility(View.VISIBLE);
-                binding.toolbarBtnsCheckVibrateLayoutLeft.setVisibility(View.VISIBLE);
+                binding.toolbarBtnsCheckVibrateLayoutLeft.setVisibility(View.VISIBLE);*/
             } else {
-                binding.toolbarBtnsCheckVibrateLayoutRight.setVisibility(View.GONE);
-                binding.toolbarBtnsCheckVibrateLayoutLeft.setVisibility(View.GONE);
+                /*binding.toolbarBtnsCheckVibrateLayoutRight.setVisibility(View.GONE);
+                binding.toolbarBtnsCheckVibrateLayoutLeft.setVisibility(View.GONE);*/
             }
         });
 
