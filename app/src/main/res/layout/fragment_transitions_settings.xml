@@ -7,6 +7,7 @@
     tools:context=".ui.settings.TransitionsSettingsFragment">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/animationVariantsMaterialCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="16dp"
@@ -15,6 +16,7 @@
         style="@style/Widget.Material3.CardView.Elevated">
 
         <LinearLayout
+            android:id="@+id/animationVariantsLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
@@ -28,20 +30,17 @@
                 android:textSize="21sp"
                 android:textStyle="bold"/>
 
-            <com.google.android.material.switchmaterial.SwitchMaterial
-                style="@style/Widget.Material3.CompoundButton.MaterialSwitch"
-                android:id="@+id/animationTransactionSwitch"
-                android:enabled="true"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="8dp"
-                android:text="Transition animation"
-                android:textSize="18sp"/>
-
             <RadioGroup
                 android:id="@+id/animationVariantsGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/noAnim"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="no anim"
+                    android:textSize="18sp"/>
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
                     android:id="@+id/fadeAnim"
@@ -86,8 +85,8 @@
                     android:textSize="18sp"/>
 
             </RadioGroup>
-
         </LinearLayout>
+
     </com.google.android.material.card.MaterialCardView>
 
 </FrameLayout>

@@ -38,6 +38,18 @@ public class MainSettingsFragment extends Fragment {
                     .commit();
         });
 
+        b.swipeSettings.setOnClickListener(v -> {
+            getParentFragmentManager().beginTransaction()
+                    .replace(R.id.containerFragment, new SwipeSettingsFragment())
+                    .commit();
+        });
+
+        b.otherSettings.setOnClickListener(v -> {
+            getParentFragmentManager().beginTransaction()
+                    .replace(R.id.containerFragment, new OtherSettingsFragment())
+                    .commit();
+        });
+
         return b.getRoot();
     }
 }

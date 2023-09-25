@@ -38,7 +38,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Настройки кнопок"
-                        android:textSize="21sp"
+                        android:textSize="63sp"
                         android:padding="10dp"
                         android:textStyle="bold"/>
 
@@ -51,7 +51,7 @@
                         android:layout_height="wrap_content"
                         android:paddingHorizontal="8dp"
                         android:text="Вибрация при нажатии"
-                        android:textSize="18sp"/>
+                        android:textSize="43sp"/>
 
                     <com.google.android.material.slider.Slider
                         android:id="@+id/clickVibrateSlider"
@@ -72,14 +72,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Вибрация на все кнопки"
-                            android:textSize="18sp"/>
+                            android:textSize="43sp"/>
 
                         <com.google.android.material.radiobutton.MaterialRadioButton
                             android:id="@+id/partVibration"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Частичная вибрация"
-                            android:textSize="18sp"/>
+                            android:textSize="43sp"/>
 
                     </RadioGroup>
 
@@ -92,7 +92,7 @@
                         android:layout_height="wrap_content"
                         android:paddingHorizontal="8dp"
                         android:text="Вибрация на кнопки счетчика"
-                        android:textSize="18sp"/>
+                        android:textSize="43sp"/>
 
                     <LinearLayout
                         android:id="@+id/counterBtnsCheckVibrateLayout"
@@ -105,6 +105,7 @@
                             android:id="@+id/plusBtnSetVib"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textSize="43sp"
                             android:text="+"/>
 
                         <com.google.android.material.checkbox.MaterialCheckBox
@@ -112,6 +113,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
+                            android:textSize="43sp"
                             android:text="-"/>
 
                         <com.google.android.material.checkbox.MaterialCheckBox
@@ -119,6 +121,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
+                            android:textSize="43sp"
                             android:text="reset"/>
 
                     </LinearLayout>
@@ -132,7 +135,7 @@
                         android:layout_height="wrap_content"
                         android:paddingHorizontal="8dp"
                         android:text="Вибрация на кнопки управления"
-                        android:textSize="18sp"/>
+                        android:textSize="43sp"/>
 
                     <LinearLayout
                         android:id="@+id/toolbarBtnsCheckVibrateLayoutRight"
@@ -145,21 +148,24 @@
                             android:id="@+id/settingsBtnSetVib"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="settings"/>
+                            android:text="settings"
+                            android:textSize="43sp"/>
 
                         <com.google.android.material.checkbox.MaterialCheckBox
                             android:id="@+id/tutorialBtnSetVib"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:text="tutorial"/>
+                            android:text="tutorial"
+                            android:textSize="43sp"/>
 
                         <com.google.android.material.checkbox.MaterialCheckBox
                             android:id="@+id/saveBtnSetVib"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:text="save"/>
+                            android:text="save"
+                            android:textSize="43sp"/>
 
                     </LinearLayout>
 
@@ -174,21 +180,24 @@
                             android:id="@+id/editBtnSetVib"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="edit"/>
+                            android:text="edit"
+                            android:textSize="43sp"/>
 
                         <com.google.android.material.checkbox.MaterialCheckBox
                             android:id="@+id/deleteBtnSetVib"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:text="delete"/>
+                            android:text="delete"
+                            android:textSize="43sp"/>
 
                         <com.google.android.material.checkbox.MaterialCheckBox
                             android:id="@+id/listBtnSetVib"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:text="list"/>
+                            android:text="list"
+                            android:textSize="43sp"/>
 
                     </LinearLayout>
 
@@ -203,7 +212,7 @@
                         android:layout_marginTop="20dp"
                         android:layout_marginLeft="20dp"
                         android:text="Вибрация при завершении цели"
-                        android:textSize="18sp"/>
+                        android:textSize="43sp"/>
 
                     <com.google.android.material.slider.Slider
                         android:id="@+id/endTargetVibrateSlider"
@@ -221,7 +230,7 @@
                         android:layout_height="wrap_content"
                         android:paddingHorizontal="8dp"
                         android:text="Обработчик кликов"
-                        android:textSize="18sp"/>
+                        android:textSize="43sp"/>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textViewClickLayout"
@@ -239,7 +248,7 @@
                             android:layout_marginTop="20dp"
                             android:padding="10dp"
                             android:gravity="center"
-                            android:textSize="21sp"
+                            android:textSize="63sp"
                             android:textStyle="bold"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -259,9 +268,10 @@
                             android:gravity="center"
                             android:imeOptions="flagNavigateNext"
                             android:inputType="number"
+                            
                             android:textAllCaps="true"
                             android:textColorHint="@color/white"
-                            android:textSize="18sp" />
+                            android:textSize="43sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -279,9 +289,10 @@
                             android:gravity="center"
                             android:imeOptions="flagNavigateNext"
                             android:inputType="number"
+                            
                             android:textAllCaps="true"
                             android:textColorHint="@color/white"
-                            android:textSize="18sp" />
+                            android:textSize="43sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -299,9 +310,10 @@
                             android:gravity="center"
                             android:imeOptions="actionDone"
                             android:inputType="number"
+                            
                             android:textAllCaps="true"
                             android:textColorHint="@color/white"
-                            android:textSize="18sp" />
+                            android:textSize="43sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.button.MaterialButton
@@ -309,6 +321,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Сохранить"
+                        android:textSize="43sp"
                         android:layout_marginTop="20dp"
                         android:layout_marginLeft="60dp"
                         android:layout_marginRight="60dp"
@@ -324,7 +337,7 @@
                         android:paddingHorizontal="8dp"
                         android:layout_marginTop="20dp"
                         android:text="Обработчик долгих кликов"
-                        android:textSize="18sp"/>
+                        android:textSize="43sp"/>
 
                     <com.google.android.material.switchmaterial.SwitchMaterial
                         style="@style/Widget.Material3.CompoundButton.MaterialSwitch"
@@ -335,7 +348,7 @@
                         android:layout_height="wrap_content"
                         android:paddingHorizontal="8dp"
                         android:text="Вибрация при долгом нажатии"
-                        android:textSize="18sp"/>
+                        android:textSize="43sp"/>
 
                     <com.google.android.material.slider.Slider
                         android:id="@+id/clickLongVibrateSlider"
@@ -356,7 +369,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp"
                             android:text="Одноразовый долгий клик"
-                            android:textSize="18sp"/>
+                            android:textSize="43sp"/>
 
                         <com.google.android.material.radiobutton.MaterialRadioButton
                             android:id="@+id/regularLongClick"
@@ -364,7 +377,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp"
                             android:text="Постоянный долгий клик"
-                            android:textSize="18sp"/>
+                            android:textSize="43sp"/>
 
                     </RadioGroup>
 
@@ -384,7 +397,7 @@
                             android:layout_marginTop="20dp"
                             android:padding="10dp"
                             android:gravity="center"
-                            android:textSize="21sp"
+                            android:textSize="63sp"
                             android:textStyle="bold"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -404,9 +417,10 @@
                             android:gravity="center"
                             android:imeOptions="flagNavigateNext"
                             android:inputType="number"
+                            
                             android:textAllCaps="true"
                             android:textColorHint="@color/white"
-                            android:textSize="18sp" />
+                            android:textSize="43sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -424,9 +438,10 @@
                             android:gravity="center"
                             android:imeOptions="flagNavigateNext"
                             android:inputType="number"
+                            
                             android:textAllCaps="true"
                             android:textColorHint="@color/white"
-                            android:textSize="18sp" />
+                            android:textSize="43sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -444,9 +459,10 @@
                             android:gravity="center"
                             android:imeOptions="actionDone"
                             android:inputType="number"
+                            
                             android:textAllCaps="true"
                             android:textColorHint="@color/white"
-                            android:textSize="18sp" />
+                            android:textSize="43sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.button.MaterialButton
@@ -454,6 +470,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Сохранить"
+                        android:textSize="43sp"
                         android:layout_marginTop="20dp"
                         android:layout_marginLeft="60dp"
                         android:layout_marginRight="60dp"

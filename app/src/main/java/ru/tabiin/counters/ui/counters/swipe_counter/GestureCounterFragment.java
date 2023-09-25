@@ -2,6 +2,7 @@ package ru.tabiin.counters.ui.counters.swipe_counter;
 
 import static ru.tabiin.counters.util.UtilFragment.changeFragment;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Handler;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +27,7 @@ import ru.tabiin.counters.ui.counters.counter_progress.CounterMainFragment;
 import ru.tabiin.counters.ui.counters.counter_progress.CounterViewModel;
 import ru.tabiin.counters.ui.main.MainProgressFragment;
 import ru.tabiin.counters.ui.main.MainSwipeFragment;
-import ru.tabiin.counters.ui.settings.SettingsFragment;
+import ru.tabiin.counters.ui.settings.MainSettingsFragment;
 import ru.tabiin.counters.ui.settings.TutorialFragment;
 import ru.tabiin.counters.util.OnSwipeTouchListener;
 
@@ -40,6 +42,7 @@ public class GestureCounterFragment extends Fragment {
     private CounterItem counterItem;
     private CounterViewModel counterViewModel;
     private MainSwipeFragment mainSwipeFragment;
+    private Vibrator vibrator;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,13 +76,15 @@ public class GestureCounterFragment extends Fragment {
         cmf = new CounterMainFragment();
         cbf = new CounterBetaFragment();
 
+        vibrator = vibrator = (Vibrator) requireContext().getSystemService(Context.VIBRATOR_SERVICE);
+
         mainSwipeFragment = new MainSwipeFragment();
 
         handler = new Handler();
 
         binding.openSettingsBtn.setOnClickListener(view -> {
             changeFragment(requireActivity(),
-                    new SettingsFragment(),
+                    new MainSettingsFragment(),
                     R.id.containerFragment,
                     savedInstanceState
             );
@@ -152,6 +157,7 @@ public class GestureCounterFragment extends Fragment {
 
                     @Override
                     public void onClick() {
+                        vibrator.vibrate(50);
                         counter++;
                         binding.gestureCounter.setText(Integer.toString(counter));
                         /**
@@ -166,6 +172,7 @@ public class GestureCounterFragment extends Fragment {
 
                     @Override
                     public void onSwipeDown() {
+                        vibrator.vibrate(50);
                         counter--;
                         binding.gestureCounter.setText(Integer.toString(counter));
                         /**
@@ -180,6 +187,7 @@ public class GestureCounterFragment extends Fragment {
 
                     @Override
                     public void onLongClick() {
+                        vibrator.vibrate(200);
                         if (counter != 0 &&
                                 binding.gestureCounter.getText().toString() != "0")
                             onMaterialAlert();
@@ -228,6 +236,7 @@ public class GestureCounterFragment extends Fragment {
                 .setTitle("Reset")
                 .setMessage("Вы уверены, что хотите обновить счетчик?")
                 .setPositiveButton("Да", (dialogInterface, i) -> {
+                    vibrator.vibrate(200);
                     counter = 0;
                     binding.gestureCounter
                             .setText(new StringBuilder()

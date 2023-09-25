@@ -31,4 +31,6 @@ public class App extends Application {
                 AppCompatDelegate.MODE_NIGHT_YES};
         AppCompatDelegate.setDefaultNightMode(mode[nightMode]);
     }
+
 }
+

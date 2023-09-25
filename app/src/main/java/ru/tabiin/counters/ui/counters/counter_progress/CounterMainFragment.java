@@ -36,7 +36,6 @@ import ru.tabiin.counters.ui.counters.circle_progress.CounterBetaFragment;
 import ru.tabiin.counters.ui.counters.swipe_counter.GestureCounterFragment;
 import ru.tabiin.counters.ui.main.MainProgressFragment;
 import ru.tabiin.counters.ui.settings.MainSettingsFragment;
-import ru.tabiin.counters.ui.settings.SettingsFragment;
 import ru.tabiin.counters.ui.settings.TutorialFragment;
 import ru.tabiin.counters.util.CallBack;
 
@@ -376,6 +375,7 @@ public class CounterMainFragment extends Fragment {
 
 
         binding.counterResetBtn.setOnClickListener(view -> {
+            vibrator.vibrate(200);
             if (currentCount != 0) resetCounterAlert();
             /**
              * сделать сохранение
@@ -427,6 +427,7 @@ public class CounterMainFragment extends Fragment {
                 .setTitle("Reset")
                 .setMessage("Вы уверены, что хотите обновить счетчик?")
                 .setPositiveButton("Да", (dialogInterface, i) -> {
+                    vibrator.vibrate(200);
                     currentCount = 0;
                     binding.counterProgressTv.setText(new StringBuilder().append(0).append(" / ")
                                     .append(binding.counterTarget.getText().toString()).toString());

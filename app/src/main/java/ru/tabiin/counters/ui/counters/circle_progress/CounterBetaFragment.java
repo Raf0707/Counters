@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Handler;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,7 @@ import ru.tabiin.counters.ui.counters.counter_progress.CounterMainFragment;
 import ru.tabiin.counters.ui.counters.counter_progress.CounterViewModel;
 import ru.tabiin.counters.ui.main.MainCircleFragment;
 import ru.tabiin.counters.ui.main.MainProgressFragment;
-import ru.tabiin.counters.ui.settings.SettingsFragment;
+import ru.tabiin.counters.ui.settings.MainSettingsFragment;
 import ru.tabiin.counters.ui.settings.TutorialFragment;
 import ru.tabiin.counters.util.OnSwipeTouchListener;
 
@@ -54,6 +55,7 @@ public class CounterBetaFragment extends Fragment {
     private CounterViewModel counterViewModel;
     private MainProgressFragment mainFragment;
     private MainCircleFragment mainCircleFragment;
+    private Vibrator vibrator;
 
     private static final TimeInterpolator GAUGE_ANIMATION_INTERPOLATOR =
             new DecelerateInterpolator(2);
@@ -74,6 +76,8 @@ public class CounterBetaFragment extends Fragment {
 
         mainFragment = new MainProgressFragment();
         mainCircleFragment = new MainCircleFragment();
+
+        vibrator = (Vibrator) requireContext().getSystemService(Context.VIBRATOR_SERVICE);
 
 
         Bundle bundle = getArguments();
@@ -198,7 +202,7 @@ public class CounterBetaFragment extends Fragment {
 
                     @Override
                     public void onClick() {
-
+                        vibrator.vibrate(50);
                         if (binding.counterTarget.getText().toString().length() == 0) {
                             maxValue = 100;
                             binding.counterTarget.setText(Integer.toString(maxValue));
@@ -207,6 +211,7 @@ public class CounterBetaFragment extends Fragment {
                                             currentCount));
                         }
                         if (currentCount == maxValue) {
+                            vibrator.vibrate(1000);
                             binding.textCounter.setText(MessageFormat.format("{0}",
                                                     binding.counterTarget.getText().toString()));
 
@@ -261,6 +266,7 @@ public class CounterBetaFragment extends Fragment {
 
                     @Override
                     public void onSwipeDown() {
+                        vibrator.vibrate(50);
                         currentCount--;
                         if (currentCount < 0) {
                             currentCount = 0;
@@ -306,6 +312,7 @@ public class CounterBetaFragment extends Fragment {
 
                     @Override
                     public void onLongClick() {
+                        vibrator.vibrate(200);
                         if (currentCount != 0) onMaterialAlert();
                         /**
                          * сделать сохранение
@@ -321,7 +328,7 @@ public class CounterBetaFragment extends Fragment {
 
         binding.openSettingsBtn.setOnClickListener(view -> {
             changeFragment(requireActivity(),
-                    new SettingsFragment(),
+                    new MainSettingsFragment(),
                     R.id.containerFragment,
                     savedInstanceState
             );
@@ -400,6 +407,7 @@ public class CounterBetaFragment extends Fragment {
                 .setTitle("Reset")
                 .setMessage("Вы уверены, что хотите обновить счетчик?")
                 .setPositiveButton("Да", (dialogInterface, i) -> {
+                    vibrator.vibrate(200);
                     currentCount = 0;
                     binding.textCounter
                             .setText(new StringBuilder()

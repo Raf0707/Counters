@@ -28,7 +28,6 @@ import ru.tabiin.counters.BuildConfig;
 import ru.tabiin.counters.R;
 import ru.tabiin.counters.databinding.FragmentAppAboutBinding;
 import ru.tabiin.counters.ui.settings.MainSettingsFragment;
-import ru.tabiin.counters.ui.settings.SettingsFragment;
 import ru.tabiin.counters.util.CustomTabUtil;
 
 public class AppAboutFragment extends Fragment {

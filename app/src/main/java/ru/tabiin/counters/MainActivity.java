@@ -27,10 +27,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+
 
         App.instance.setNightMode();
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
 
         if (SharedPreferencesUtils.getBoolean(this, "useDynamicColors"))
             DynamicColors.applyToActivityIfAvailable(this);
